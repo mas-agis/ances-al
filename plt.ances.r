@@ -1,4 +1,7 @@
 plt.ances <- function(AAcounts,treshold,cr){
+    library(dplyr)
+    library(ggplot2)
+    library(stringr)
     akhir1 <- subset.data.frame(AAcounts,Chr==cr)
     treshol <- subset.data.frame(treshold,Chr==cr)
     akhir1$Window <- as.numeric(akhir1$Window)
@@ -12,4 +15,4 @@ plt.ances <- function(AAcounts,treshold,cr){
       geom_hline(aes(yintercept = treshol$bar3, color="Treshold 3"),linetype=2, size=1) +
       scale_color_manual(name = "Quantile", values = c( "goldenrod1","orangered2", "magenta3"))
       last_plot()
-  }
+}

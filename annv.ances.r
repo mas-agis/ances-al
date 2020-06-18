@@ -7,11 +7,18 @@ annv.ances<-function(AAcount, treshold, bar=bar1){
   cobadehlagi$min <- "-"
   output <- cobadehlagi[,c(1:3,10,11,6)]
   #getting regions with null count AA
-  auu <- setdiff(seq(0, max(AAcount$Start, na.rm = T), by = 10000),AAcount$Start)
-  aau <- auu+10000
-  uwa <- data.frame(Chr=as.factor((AAcount[1,1])), Start=auu, End=aau)
-  uwa$Ref <- 0 
-  uwa$min <- "-"
+  main <- AAcount
+  main <- na.omit(main)
+  uwa <- data.frame(Chr=0,Start=0,End=0,Ref=0,min=0)
+  uwa <- uwa[FALSE,]
+  for (i in unique(main$Chr)) {
+    data_i <- filter(main,Chr==i)
+    auu <- setdiff(seq(0, max(data_i$Start, na.rm = FALSE), by = 10000),data_i$Start)
+    aau <- auu+10000
+    khatam <- data.frame(Chr=i, Start=auu, End=aau, Ref=0,min=0)
+    #khatam <- uwa
+    uwa <- rbind(uwa,khatam)
+  }
   #Ratio of windows with no count vs. ancestral allele 
   Simpul_Main <- AAcount %>% group_by(Chr) %>% summarise(Jumlah=n())
   Simpul_Main1 <- uwa %>% group_by(Chr) %>% summarise(Jumlah=n())

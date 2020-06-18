@@ -3,6 +3,8 @@ persist.ancesA <- function(AncesAA,gr,n,cr,dip=2,scan=10000,o=0.1, p=0.01, q=0.0
   library(ggplot2)
   library(stringr)
   options(warn=-1)
+  AncesAA$Chr <- as.factor(AncesAA$Chr)
+  AncesAA$Pos <- as.factor(AncesAA$Pos)
   treshold0 <- data.frame(Chr=0,bar1=0,bar2=0,bar3=0)
   treshold0 <- treshold0[FALSE,]
   akhir0 <- data.frame(Chr=0,Start=0,End=0,Window=0,Score=0,Ancestral_count=0)
