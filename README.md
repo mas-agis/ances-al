@@ -1,10 +1,13 @@
 # ances-al 
-R based for assigning ancestral alleles and comparison of alleles frequency group/population of interest to defined ancestral alleles based on WGS data. \n
+R based for assigning ancestral alleles and comparison of alleles frequency group/population of interest to defined ancestral alleles based on WGS data. 
+
 ##INPUTS 
-Main inputs are from VCFTools frequency for SNP variants. Example linux command for preparing inputs as follow, for example: \n
-for i in {1..29}; \n
-do vcftools --vcf ~/data/Cattle/filteredSNP.vcf --chr $i --freq --keep taurus_list.txt --out ~/data/Cattle/taurus_Chr_$i; \n
-done\n
+
+Main inputs are from VCFTools frequency for SNP variants. Example linux command for preparing inputs as follow: 
+        for i in {1..29};   
+        do vcftools --vcf ~/data/Cattle/filteredSNP.vcf --chr $i --freq --keep taurus_list.txt --out ~/data/Cattle/taurus_Chr_$i;
+        done
+
 Given vcf file with name filteredSNP.vcf in the folder of ~/data/Cattle, taurus_list.txt is simple text file containing individual ids from group/population of interest in vcf file. Above command will output frequency spectrum of intended group/population per chromosome 1 to 29 in format of "taurus_Chr_$i", where group is the name of group or population of interest, Chr literally written as it is, and i is the number of the chromosome. \n
 \n
 ##Function explanations
