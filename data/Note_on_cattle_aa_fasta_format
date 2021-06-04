@@ -1,0 +1,6 @@
+For cattle ancestral allele in the format of fasta together with its index is prepared in this link:
+https://drive.google.com/drive/folders/1LQ7hPfl5XvhGvLC-crF6GwuPDsHTgcgS?usp=sharing
+
+Adding ancestral allele to vcf file can be run using the fill-aa script (provided in the folder) using similar command as follow:
+$ cat chr_29.vcf | fill-aa -a cattle_aa_29 2>test.err | gzip -c > 29_with_aa.vcf.gz
+For above command running in linux, input file is chr_29.vcf with ancestral allele cattle_aa_29; final file is named 29_with_aa.vcf.gz.
